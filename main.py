@@ -37,6 +37,7 @@ def crearInventarioTxt():
     ruta = input("Ingrese nombre del archivo a crear: ")
     clear()
     readFile_handler.crear_archivo_txt(ruta)
+    print("Archivo creado exitosamente!")
     print("----------------------------------------------")
     input("Presione enter para continuar...")
     clear()
@@ -80,7 +81,9 @@ def menuInicial():
     elif opcion=="4":
         salir()
     else:
+        clear()
         print("Indique una opción válida")
         menuInicial()
+
 
 menuInicial()

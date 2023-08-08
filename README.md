@@ -61,6 +61,7 @@ def menuInicial():
     elif opcion=="4":
         salir()
     else:
+        clear()
         print("Indique una opción válida")
         menuInicial()
 ```
@@ -115,6 +116,16 @@ def __init__(self):
     self.listaProductos = []
 ```
 
+- Funcion verificarListaProductos va a verificar que la lista de productos contenga datos, en caso contrario no va a proceder a realizar las acciones con los archivos. 
+```python
+def verificarListaProductos(self):
+        if len(self.listaProductos) == 0:
+            print("Error! No hay datos para mostrar")
+            return False
+        
+        return True
+```
+
 - Funcion leer_archivo_inv va a pedir que se le envie el nombre del archivo tipo .inv para abrir el documento y leer cada linea, hace la separacion de cada categoria del producto y muestra el inventario.
 ```python
 def leer_archivo_inv(self, ruta):
@@ -140,8 +151,11 @@ def leer_archivo_inv(self, ruta):
 ```python
 def leer_archivo_mov(self, ruta):
         
-        with open(f"{ruta}.mov", "r") as archivo:
-            lineasMovimientos = archivo.readlines()
+    if ( self.verificarListaProductos()) == False:
+         return
+
+    with open(f"{ruta}.mov", "r") as archivo:
+        lineasMovimientos = archivo.readlines()
 
             for linea in lineasMovimientos:
                 actionSplit = linea.split()
@@ -178,8 +192,14 @@ def leer_archivo_mov(self, ruta):
 ```
 - Funcion crear_archivo_txt va a pedir que se le envie un nombre para crear el archivo de tipo .txt el cual va a contenter la informacion del inventario actualizado despues de realizar las funciones anteriores.
 ```python
-def crear_archivo_txt(self, ruta):
-        with open(f"{ruta}.txt", "w") as archivo:
+ def crear_archivo_txt(self, ruta):
+        ruta_carpeta = "P:\Programacion\PracticasPython\Practica1LF\Resultados"
+        ruta_completa = os.path.join(ruta_carpeta, f"{ruta}.txt")
+        
+        if ( self.verificarListaProductos()) == False:
+            return
+        
+        with open(ruta_completa, "w") as archivo:
             archivo.write("Informe de Inventario:\n")
             archivo.write("{:<14} {:<14} {:<14} {:<14} {:<29}\n".format("Producto", "Cantidad", "Precio", "Bodega","Valor total"))
             archivo.write("-" * 70 + "\n")

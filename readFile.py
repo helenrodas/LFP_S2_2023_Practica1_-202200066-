@@ -1,5 +1,5 @@
 from CProoducto import CProoducto
-
+import os
 class readFile:
     def __init__(self):
         self.listaProductos = []
@@ -27,7 +27,7 @@ class readFile:
         
     def leer_archivo_mov(self, ruta):
         
-        if (verificarListaProductos()) == False:
+        if ( self.verificarListaProductos()) == False:
             return
 
         with open(f"{ruta}.mov", "r") as archivo:
@@ -68,7 +68,13 @@ class readFile:
 
 
     def crear_archivo_txt(self, ruta):
-        with open(f"{ruta}.txt", "w") as archivo:
+        ruta_carpeta = "P:\Programacion\PracticasPython\Practica1LF\Resultados"
+        ruta_completa = os.path.join(ruta_carpeta, f"{ruta}.txt")
+        
+        if ( self.verificarListaProductos()) == False:
+            return
+        
+        with open(ruta_completa, "w") as archivo:
             archivo.write("Informe de Inventario:\n")
             archivo.write("{:<14} {:<14} {:<14} {:<14} {:<29}\n".format("Producto", "Cantidad", "Precio", "Bodega","Valor total"))
             archivo.write("-" * 70 + "\n")
