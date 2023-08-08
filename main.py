@@ -1,10 +1,45 @@
 from readFile import readFile
+import os
 
 readFile_handler=readFile()
 
 def salir():
     print("Programa finalizado")
+
+def clear():
+    os.system('cls')
+
+
+def cargarInventario():
+    clear()
+    ruta = input("Ingrese ruta del archivo: ")
+    clear()
+    print("--------------Inventario Inicial--------------")
+    readFile_handler.leer_archivo_inv(ruta)
+    print("----------------------------------------------")
+    input("Presione enter para continuar...")
+    clear()
+
+
+def cargarMovimientos():
+    clear()
+    ruta = input("Ingrese ruta del archivo: ")
+    clear()
+    print("--------------Instrucciones movimientos--------------")
+    readFile_handler.leer_archivo_mov(ruta)
+    print("----------------------------------------------")
+    input("Presione enter para continuar...")
+    clear()
     
+
+def crearInventarioTxt():
+    clear()
+    ruta = input("Ingrese nombre del archivo a crear: ")
+    clear()
+    readFile_handler.crear_archivo_txt(ruta)
+    print("----------------------------------------------")
+    input("Presione enter para continuar...")
+    clear()
 
 def menuInicial():
     print("")
@@ -18,28 +53,34 @@ def menuInicial():
     print("4. Salir")
     print("")
     opcion=input("Ingrese una opción del menú: ")
-    #while True:
     if opcion=="1":
-        print("")
-        print("--------------Inventario Inicial--------------")
-        readFile_handler.leer_archivo('P:\Programacion\PracticasPython\Practica1LF/inventario.inv','r')
-        print("")
-        input("Presione enter para continuar...")
-        menuInicial()
+        try:
+            cargarInventario()
+            menuInicial()
+        except:
+            clear()
+            print("----Error! Archivo no encontrado----")
+            menuInicial()
     elif opcion=="2":
-        print("Accedio a Cargar instrucciones de movimiento")
-        input("Presione una enter para continuar...")
-        menuInicial()
+        try:
+            cargarMovimientos()
+            menuInicial()
+        except:
+            clear()
+            print("----Error! Archivo no encontrado----")
+            menuInicial()
     elif opcion=="3":
-        print("Accedio a cargar Crear informe de inventario")
-        input("Presione una tecla para continuar...")
-        menuInicial()
+        try:
+            crearInventarioTxt()
+            menuInicial()
+        except:
+            clear()
+            print("----Error! Archivo no pudo ser creado----")
+            menuInicial()
     elif opcion=="4":
-        print("Saliendo del programa, vuevla pronto")
         salir()
     else:
         print("Indique una opción válida")
         menuInicial()
-            
 
 menuInicial()

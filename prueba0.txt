@@ -1,0 +1,6 @@
+Informe de Inventario:
+Producto       Cantidad       Precio         Bodega         Valor total                  
+----------------------------------------------------------------------
+Manzanas       150            2.50           BodegaA        375.0                        
+Peras          60             3.00           BodegaB        180.0                        
+Platanos       55             1.75           BodegaC        96.25                        
