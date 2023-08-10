@@ -8,7 +8,7 @@ class readFile:
 
     def leer_archivo_inv(self, ruta):
         self.listaProductos = []
-        
+        print("--------------Inventario Inicial--------------")
         with open(f"{ruta}.inv", "r") as archivo:
             lineasArticulos = archivo.readlines()
 
@@ -29,7 +29,8 @@ class readFile:
         
         if ( self.verificarListaProductos()) == False:
             return
-
+        print("--------------Instrucciones movimientos--------------")
+        
         with open(f"{ruta}.mov", "r") as archivo:
             lineasMovimientos = archivo.readlines()
 
@@ -68,13 +69,17 @@ class readFile:
 
 
     def crear_archivo_txt(self, ruta):
+        
         ruta_carpeta = "P:\Programacion\PracticasPython\Practica1LF\Resultados"
         ruta_completa = os.path.join(ruta_carpeta, f"{ruta}.txt")
         
         if ( self.verificarListaProductos()) == False:
             return
         
+    
+        
         with open(ruta_completa, "w") as archivo:
+            print("Archivo creado exitosamente!")
             archivo.write("Informe de Inventario:\n")
             archivo.write("{:<14} {:<14} {:<14} {:<14} {:<29}\n".format("Producto", "Cantidad", "Precio", "Bodega","Valor total"))
             archivo.write("-" * 70 + "\n")

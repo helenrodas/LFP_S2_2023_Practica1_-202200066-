@@ -1,8 +1,10 @@
 agregar_stock Manzanas;50;BodegaA
 agregar_stock Coco;50;BodegaD
-agregar_stock Peras;10;BodegaB
+agregar_stock Peras;10;BodegaW
 vender_producto Platanos;20;BodegaC
 vender_producto Peras;100;BodegaB
 vender Uvas,10,BodegaG
 agregar_stock Manzanas;2;BodegaA
 vender_producto Banano;100;BodegaE
+agregar_stock Toallas;4;BodegaG
+vender_producto Coca;100;BodegaA
