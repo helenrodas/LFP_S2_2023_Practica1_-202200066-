@@ -54,7 +54,7 @@ class readFile:
                         if articuloSplit[0] == producto.nombre and articuloSplit[2] == producto.ubicacion:
                             cantidadActualAsInt = int(producto.cantidad)
                             cantidadAVenderAsInt = int(articuloSplit[1])
-                            if cantidadAVenderAsInt < cantidadActualAsInt:
+                            if cantidadAVenderAsInt <= cantidadActualAsInt:
                                 nuevaCantidad = cantidadActualAsInt - cantidadAVenderAsInt
                                 producto.cantidad = str(nuevaCantidad)
                                 print("Producto Vendido:", producto.nombre, "---", "Nueva cantidad en stock:", producto.cantidad)
